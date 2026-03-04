@@ -1,0 +1,414 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    animation: fadeInPhase 0.6s ease;
+}
+
+.arena {
+    position: relative;
+    background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0d1f3c 100%);
+    border-radius: var(--radius-3xl);
+    padding: 1.5rem;
+    border: 2px solid rgba(var(--primary-rgb), 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.08), inset 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Animated grid background */
+.arena::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(var(--primary-rgb), 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--primary-rgb), 0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    animation: gridShift 20s linear infinite;
+}
+
+@keyframes gridShift {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 30px 30px;
+    }
+}
+
+/* Top info bar */
+.topBar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 2;
+}
+
+.deviceInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: slideInLeft 0.5s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.deviceIconBadge {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: var(--radius-xl);
+    background: rgba(var(--primary-rgb), 0.15);
+    border: 2px solid rgba(var(--primary-rgb), 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.2);
+    animation: iconGlow 2s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.4);
+    }
+}
+
+.deviceIconBadge span {
+    font-size: 1.5rem;
+}
+
+.deviceTitle {
+    font-weight: 800;
+    font-size: 1rem;
+    color: white;
+}
+
+.deviceSubtitle {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+
+.timerBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-weight: 900;
+    font-size: 1rem;
+    color: white;
+    animation: slideInRight 0.5s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timerBadge.danger {
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.4);
+    background: rgba(255, 107, 107, 0.12);
+    animation: slideInRight 0.5s ease, dangerPulse 1s ease-in-out infinite;
+}
+
+@keyframes dangerPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 15px 2px rgba(255, 107, 107, 0.3);
+    }
+}
+
+.timerBadge span {
+    font-size: 1.125rem;
+}
+
+/* Progress bar */
+.progress {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.progressTrack {
+    flex: 1;
+    height: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), #4ade80);
+    border-radius: var(--radius-full);
+    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
+}
+
+.progressLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+}
+
+/* Maze Container */
+.mazeWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+    padding: 0.5rem;
+    position: relative;
+    z-index: 2;
+    animation: mazeAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes mazeAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.mazeGrid {
+    display: grid;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 0 30px rgba(var(--primary-rgb), 0.1), 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(var(--primary-rgb), 0.15);
+    overflow: hidden;
+}
+
+.mazeCell {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    position: relative;
+    background: rgba(10, 22, 40, 0.6);
+}
+
+.mazeCell:hover {
+    background: rgba(var(--primary-rgb), 0.06);
+}
+
+.mazeCell.reachable:hover {
+    background: rgba(var(--primary-rgb), 0.18);
+    box-shadow: inset 0 0 15px rgba(var(--primary-rgb), 0.15);
+}
+
+.mazeCell.reachable {
+    cursor: pointer;
+}
+
+.mazeCell.notReachable {
+    cursor: default;
+}
+
+/* Neon Walls */
+.wallTop {
+    border-top: 2.5px solid rgba(var(--primary-rgb), 0.5);
+    box-shadow: inset 0 1px 4px rgba(var(--primary-rgb), 0.15);
+}
+
+.wallRight {
+    border-right: 2.5px solid rgba(var(--primary-rgb), 0.5);
+}
+
+.wallBottom {
+    border-bottom: 2.5px solid rgba(var(--primary-rgb), 0.5);
+}
+
+.wallLeft {
+    border-left: 2.5px solid rgba(var(--primary-rgb), 0.5);
+}
+
+/* Player */
+.player {
+    background: rgba(var(--primary-rgb), 0.2);
+    box-shadow: inset 0 0 20px rgba(var(--primary-rgb), 0.15);
+}
+
+.playerIcon {
+    font-size: 1.5rem;
+    animation: playerFloat 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(var(--primary-rgb), 0.6));
+    z-index: 2;
+}
+
+/* Visited trail */
+.visited {
+    background: rgba(var(--primary-rgb), 0.07);
+    box-shadow: inset 0 0 10px rgba(var(--primary-rgb), 0.1);
+}
+
+@keyframes playerFloat {
+
+    0%,
+    100% {
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.15) translateY(-3px);
+    }
+}
+
+/* Exit / Plug */
+.exit {
+    background: rgba(255, 107, 107, 0.1);
+    animation: exitGlow 2s ease-in-out infinite;
+}
+
+@keyframes exitGlow {
+
+    0%,
+    100% {
+        background: rgba(255, 107, 107, 0.06);
+    }
+
+    50% {
+        background: rgba(255, 107, 107, 0.15);
+    }
+}
+
+.exitIcon {
+    font-size: 1.5rem;
+    z-index: 2;
+    filter: drop-shadow(0 0 6px rgba(255, 107, 107, 0.5));
+    animation: exitPulse 2s ease-in-out infinite;
+}
+
+@keyframes exitPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Reachable hint dots */
+.reachableDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(var(--primary-rgb), 0.5);
+    box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.4);
+    animation: dotFlash 1.2s ease-in-out infinite;
+}
+
+@keyframes dotFlash {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.6);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Instructions */
+.instructions {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+    padding: 0.625rem 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.instructions span {
+    color: var(--primary);
+    font-size: 1.125rem;
+}
+
+.instructions p {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+    .arena {
+        padding: 2rem;
+    }
+
+    .playerIcon,
+    .exitIcon {
+        font-size: 1.75rem;
+    }
+}

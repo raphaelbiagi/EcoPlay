@@ -1,0 +1,38 @@
+.card {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--slate-100);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.label {
+    color: var(--slate-500);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.value {
+    font-size: 1.875rem;
+    font-weight: 900;
+    color: var(--slate-900);
+    margin-top: 0.25rem;
+}
+
+.feedback {
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.feedbackVisible {
+    opacity: 1;
+}

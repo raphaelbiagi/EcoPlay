@@ -1,0 +1,150 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: white;
+    border-radius: var(--radius-3xl);
+    padding: 3rem;
+    max-width: 28rem;
+    width: 100%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.iconWrapper {
+    width: 4.5rem;
+    height: 4.5rem;
+    background: rgba(var(--primary-rgb), 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--primary);
+}
+
+.iconWrapper span {
+    font-size: 2.5rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--slate-900);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.inputGroup {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 3rem;
+    border: 2px solid var(--slate-200);
+    border-radius: var(--radius-xl);
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--slate-900);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input::placeholder {
+    color: var(--slate-400);
+    font-weight: 400;
+}
+
+.input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.15);
+}
+
+.inputIcon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--slate-400);
+    font-size: 1.25rem;
+}
+
+.input:focus~.inputIcon {
+    color: var(--primary);
+}
+
+.playButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--primary);
+    color: var(--slate-900);
+    font-size: 1.125rem;
+    font-weight: 900;
+    height: 3.5rem;
+    border-radius: var(--radius-xl);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.3);
+    transition: all 0.2s;
+}
+
+.playButton:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.4);
+}
+
+.playButton:active {
+    transform: scale(0.98);
+}
+
+.playButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}

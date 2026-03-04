@@ -1,0 +1,111 @@
+.main {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.statusGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+.cardsRow {
+    display: flex;
+    gap: 1rem;
+}
+
+.phaseArea {
+    flex-grow: 1;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Controls Footer */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin: 1rem;
+    margin-top: auto;
+}
+
+.controlButtons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.controlBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--slate-200);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+}
+
+.controlBtn:hover {
+    background: var(--slate-50);
+}
+
+.healthSection {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hearts {
+    display: flex;
+}
+
+.heart {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 2px solid var(--bg-light);
+    background: #ef4444;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    margin-left: -0.75rem;
+}
+
+.heart:first-child {
+    margin-left: 0;
+}
+
+.heart span {
+    color: white;
+    font-size: 0.875rem;
+}
+
+.healthLabel {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--slate-500);
+}
+
+@media (min-width: 768px) {
+    .statusGrid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .controls {
+        flex-direction: row;
+    }
+}

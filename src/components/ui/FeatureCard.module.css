@@ -1,0 +1,51 @@
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 2rem;
+    border-radius: var(--radius-3xl);
+    border: 1px solid var(--slate-100);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.card:hover {
+    border-color: rgba(var(--primary-rgb), 0.4);
+}
+
+.iconWrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: var(--radius-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    transition: transform 0.3s;
+}
+
+.card:hover .iconWrapper {
+    transform: scale(1.1);
+}
+
+.iconWrapper span {
+    font-size: 1.875rem;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--slate-900);
+}
+
+.description {
+    color: var(--slate-500);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}

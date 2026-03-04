@@ -1,0 +1,150 @@
+.panel {
+    background: white;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--slate-100);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--slate-700);
+}
+
+.headerTitle span {
+    color: var(--primary);
+    font-size: 1.25rem;
+}
+
+.liveIndicator {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.liveDot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: pulse 2s infinite;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 16rem;
+    overflow-y: auto;
+}
+
+.playerRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    transition: background 0.2s;
+    border-bottom: 1px solid var(--slate-50);
+}
+
+.playerRow:last-child {
+    border-bottom: none;
+}
+
+.playerRow:hover {
+    background: var(--slate-50);
+}
+
+.playerRow.isMe {
+    background: rgba(var(--primary-rgb), 0.05);
+}
+
+.position {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--slate-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.75rem;
+    color: var(--slate-600);
+    flex-shrink: 0;
+}
+
+.position.first {
+    background: #fbbf24;
+    color: white;
+}
+
+.position.second {
+    background: var(--slate-300);
+    color: white;
+}
+
+.position.third {
+    background: #cd7f32;
+    color: white;
+}
+
+.playerInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.playerName {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--slate-800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playerStatus {
+    font-size: 0.6875rem;
+    color: var(--slate-400);
+    font-weight: 500;
+}
+
+.playerStatus.finished {
+    color: var(--primary);
+}
+
+.playerScore {
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--slate-900);
+    white-space: nowrap;
+}
+
+.emptyState {
+    padding: 2rem;
+    text-align: center;
+    color: var(--slate-400);
+    font-size: 0.875rem;
+}
+
+.emptyState span {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
